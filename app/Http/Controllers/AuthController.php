@@ -15,7 +15,7 @@ class AuthController extends Controller
     {
         $this->middleware('auth:api', ['except' => ['login', 'register']]);
 
-    }//end __construct()
+    }
 
 
     public function login(Request $request)
@@ -42,7 +42,7 @@ class AuthController extends Controller
 
         return $this->respondWithToken($token);
 
-    }//end login()
+    }
 
 
     public function register(Request $request)
@@ -72,7 +72,7 @@ class AuthController extends Controller
 
         return response()->json(['message' => 'User created successfully', 'user' => $user]);
 
-    }//end register()
+    }
 
 
     public function logout()
@@ -81,21 +81,21 @@ class AuthController extends Controller
 
         return response()->json(['message' => 'User logged out successfully']);
 
-    }//end logout()
+    }
 
 
     public function profile()
     {
         return response()->json($this->guard()->user());
 
-    }//end profile()
+    }
 
 
     public function refresh()
     {
         return $this->respondWithToken($this->guard()->refresh());
 
-    }//end refresh()
+    }
 
 
     protected function respondWithToken($token)
@@ -108,14 +108,14 @@ class AuthController extends Controller
             ]
         );
 
-    }//end respondWithToken()
+    }
 
 
     protected function guard()
     {
         return Auth::guard();
 
-    }//end guard()
+    }
 
 
-}//end class
+}
